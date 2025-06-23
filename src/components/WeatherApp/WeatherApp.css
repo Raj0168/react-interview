@@ -1,0 +1,58 @@
+.input-wrapper {
+  position: relative;
+  width: fit-content;
+}
+
+.input-wrapper input {
+  width: 300px;
+}
+
+.suggestion-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #333;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.suggestion-item {
+  padding: 0.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.suggestion-item:hover {
+  background-color: #000;
+}
+
+.weather-card {
+  background: linear-gradient(145deg, #2c2c2c, #1e1e1e);
+  color: #f1f1f1;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  max-width: 400px;
+  text-align: left;
+  font-family: "Segoe UI", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.weather-location {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.weather-detail {
+  font-size: 1.1rem;
+  margin: 0.4rem 0;
+}
+
+.weather-empty {
+  margin-top: 1rem;
+  color: #999;
+}
