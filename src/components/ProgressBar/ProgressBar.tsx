@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 export default function ProgressBar() {
   const [progress, setProgress] = useState(0);
   const [running, setRunning] = useState<boolean>(false);
-  const intervalRef = useRef(null);
+  const intervalRef = useRef<any>(null);
 
   const startProgress = () => {
     if (running) return;

@@ -50,8 +50,6 @@ export default function AccordionComponent() {
       return;
     }
 
-    console.log(newAccordionItem);
-
     setAccordionItems((prev) => [
       ...prev,
       { ...newAccordionItem, id: Date.now() },

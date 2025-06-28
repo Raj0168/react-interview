@@ -1,35 +1,74 @@
-import { useState } from "react";
-import PhoneBook from "../components/PhoneBook/PhoneBook";
-import TodoApp from "../components/Todo/TodoApp";
-import TodoList from "../components/TodoList";
-import Modal from "../components/Modal";
+import React, { Suspense, useState } from "react";
+import Modal from "../components/CommonUtils/Modal";
 import "../styles/HomePage.css";
-import LoginFormValidator from "../components/LoginFormValidator";
-import TabsComponent from "../components/TabsComponent";
-import AccordionComponent from "../components/AccordionComponent";
-import ProgressBar from "../components/ProgressBar";
-import QuizApp from "../components/QuizApp";
-import SearchableList from "../components/SearchableList";
-import AnalogClock from "../components/AnalogClock";
-import WeatherApp from "../components/WeatherApp/WeatherApp";
+import Loader from "../components/Loader/Loader";
 
 interface ComponentEntry {
   name: string;
-  Component: React.ComponentType;
+  loader: () => Promise<{ default: React.ComponentType<any> }>;
 }
 
 const components: ComponentEntry[] = [
-  { name: "Todo App (Props)", Component: TodoApp },
-  { name: "Todo List", Component: TodoList },
-  { name: "Phone Book", Component: PhoneBook },
-  { name: "Login Form Validator", Component: LoginFormValidator },
-  { name: "Tabs Component", Component: TabsComponent },
-  { name: "Accordion Component", Component: AccordionComponent },
-  { name: "Progress Bar", Component: ProgressBar },
-  { name: "Quiz App", Component: QuizApp },
-  { name: "Searchable List", Component: SearchableList },
-  { name: "Analog Clock", Component: AnalogClock },
-  { name: "Weather App", Component: WeatherApp },
+  {
+    name: "Todo App (Props)",
+    loader: () => import("../components/Todo/TodoApp"),
+  },
+  { name: "Todo List", loader: () => import("../components/Todo/TodoList") },
+  {
+    name: "Phone Book",
+    loader: () => import("../components/PhoneBook/PhoneBook"),
+  },
+  {
+    name: "Login Form Validator",
+    loader: () => import("../components/CommonUtils/LoginFormValidator"),
+  },
+  {
+    name: "Tabs Component",
+    loader: () => import("../components/CommonUtils/TabsComponent"),
+  },
+  {
+    name: "Accordion Component",
+    loader: () => import("../components/CommonUtils/AccordionComponent"),
+  },
+  { name: "Stopwatch", loader: () => import("../components/ProgressBar/StopWatch") },
+  { name: "Progress Bar", loader: () => import("../components/ProgressBar/ProgressBar") },
+  {
+    name: "Progress Bar - II",
+    loader: () => import("../components/ProgressBar/ProgressBars-II"),
+  },
+  { name: "Quiz App", loader: () => import("../components/misc/QuizApp") },
+  {
+    name: "Searchable List",
+    loader: () => import("../components/CommonUtils/SearchableList"),
+  },
+  { name: "Analog Clock", loader: () => import("../components/misc/AnalogClock") },
+  {
+    name: "Weather App",
+    loader: () => import("../components/WeatherApp/WeatherApp"),
+  },
+  {
+    name: "Image Carousel",
+    loader: () => import("../components/ImageCarousel/Carousel"),
+  },
+  { name: "Job Board", loader: () => import("../components/CallAPIs/JobBoard") },
+  {
+    name: "Star Rating",
+    loader: () => import("../components/StarRating/StarRating"),
+  },
+  { name: "Like Button", loader: () => import("../components/CallAPIs/LikeButton") },
+  { name: "Traffic light", loader: () => import("../components/misc/TrafficLight") },
+  {
+    name: "Modal Dialog",
+    loader: () => import("../components/ModalDialog/CallModal"),
+  },
+  {
+    name: "Pagination Table",
+    loader: () => import("../components/CommonUtils/PaginationTable"),
+  },
+  {
+    name: "Transfer List",
+    loader: () => import("../components/TransferList/TransferList"),
+  },
 ];
 
 export default function HomePage() {
@@ -68,7 +107,18 @@ export default function HomePage() {
           onClose={closeModal}
           title={selectedComponent.name}
         >
-          <selectedComponent.Component />
+          <Suspense
+            fallback={
+              <div>
+                <Loader />
+              </div>
+            }
+          >
+            {(() => {
+              const LazyComponent = React.lazy(selectedComponent.loader);
+              return <LazyComponent />;
+            })()}
+          </Suspense>
         </Modal>
       )}
     </>

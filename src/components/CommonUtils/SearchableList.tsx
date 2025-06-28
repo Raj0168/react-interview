@@ -67,7 +67,8 @@ export default function SearchableList() {
           border: "1px solid #eee",
           borderRadius: "5px",
           padding: "10px",
-          backgroundColor: "rgba(255, 255, 255, 1)",
+          color: "#fff",
+          backgroundColor: "#333",
         }}
       >
         {items.length > 0 ? (
@@ -77,7 +78,6 @@ export default function SearchableList() {
                 key={index}
                 style={{
                   padding: "8px 0",
-                  color: "#555",
                   fontSize: "1em",
                 }}
               >
