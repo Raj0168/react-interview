@@ -83,11 +83,11 @@ const SandboxPage = () => {
 
       const iframeWindow = iframe.contentWindow;
       if (iframeWindow) {
-        iframeWindow.console.log = console.log;
-        iframeWindow.console.error = console.error;
-        iframeWindow.eval(`(() => { ${codeToRun} })()`);
+        const win = iframeWindow as Window & typeof globalThis;
+        win.console.log = console.log;
+        win.console.error = console.error;
+        win.eval(`(() => { ${codeToRun} })()`);
       }
-
       document.body.removeChild(iframe);
     } catch (err: any) {
       logs.push(
@@ -208,7 +208,7 @@ const SandboxPage = () => {
           value={code}
           onChange={(newVal) => setCode(newVal || "")}
           className="monaco-editor-instance"
-          editorDidMount={(editor, monaco) => {
+          editorDidMount={(_, monaco) => {
             monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
               target: monaco.languages.typescript.ScriptTarget.ESNext,
               allowNonTsExtensions: true,
