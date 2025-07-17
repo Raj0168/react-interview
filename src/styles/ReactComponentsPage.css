@@ -1,0 +1,92 @@
+.component-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  background-color: #282c34;
+  min-height: calc(100vh - 60px);
+  align-items: flex-start;
+}
+
+.component-card {
+  background-color: #3a3f47;
+  border: 1px solid #4f5663;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  color: #e0e0e0;
+}
+
+.component-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  border-color: #61dafb;
+}
+
+.component-card h3 {
+  margin: 0;
+  color: #61dafb;
+  font-size: 1.2rem;
+}
+
+.modal-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #4f5663;
+}
+
+.modal-tab {
+  background-color: transparent;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #cccccc;
+  cursor: pointer;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  outline: none;
+}
+
+.modal-tab:hover {
+  color: #61dafb;
+}
+
+.modal-tab.active {
+  color: #61dafb;
+  border-bottom: 2px solid #61dafb;
+}
+
+.modal-tabpanel {
+  padding: 1rem;
+  background-color: #282c34;
+  border-radius: 0 0 8px 8px;
+  color: #e0e0e0;
+  overflow: auto;
+  max-height: 70vh;
+}
+
+.code-tabpanel pre {
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.code-tabpanel code {
+  font-family: "Fira Code", "Consolas", "Monaco", monospace;
+  font-size: 0.9rem;
+  color: #d4d4d4;
+}

@@ -1,0 +1,14 @@
+import { Link } from "react-router-dom";
+import '../styles/Header.css';
+
+const Header = () => (
+  <header className="header-container">
+    <nav className="header-nav">
+      <Link to="/" className="nav-link">Home</Link>
+      <Link to="/sandbox" className="nav-link">Sandbox</Link>
+      <Link to="/components" className="nav-link">Components</Link>
+    </nav>
+  </header>
+);
+
+export default Header;

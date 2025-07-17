@@ -1,0 +1,4 @@
+{
+  "javascript": ["example1.js", "example2.js"],
+  "typescript": ["example1.ts", "example2.ts"]
+}
