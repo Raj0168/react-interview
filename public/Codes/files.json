@@ -1,4 +1,10 @@
 {
-  "javascript": ["example1.js"],
+  "javascript": [
+    "arrayMethods.js",
+    "classes.js",
+    "closures.js",
+    "currying.js",
+    "functions.js"
+  ],
   "typescript": ["example1.ts"]
 }
