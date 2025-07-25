@@ -45,3 +45,29 @@ class Calculator {
 const calculate = new Calculator();
 const resCalc = calculate.add(10).multiply(20).display();
 console.log(resCalc); // Output: 200
+
+class CalculatorPractice {
+  constructor(init = 0) {
+    this.res = init;
+  }
+
+  _chain(newResult) {
+    return new CalculatorPractice(newResult);
+  }
+
+  sum(num) {
+    return this._chain(this.res + num);
+  }
+
+  multiply(num) {
+    return this._chain(this.res * num);
+  }
+
+  result() {
+    return this.res;
+  }
+}
+
+const cal = new CalculatorPractice();
+const res = cal.sum(4).multiply(2).sum(10).result();
+console.log("result:", res);
