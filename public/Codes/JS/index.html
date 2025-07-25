@@ -9,7 +9,20 @@
     <div>
       <h1 id="heading">Hello there!</h1>
     </div>
+    <input type="text" id="searchInput" placeholder="Type to search..." />
+    <p id="debounceResult"></p>
+
+    <div style="height: 1000px; overflow: auto" id="scrollContainer">
+      <p
+        style="position: fixed; top: 0; right: 0; background: cyan"
+        id="scrollStatus"
+      >
+        Scroll to see updates
+      </p>
+    </div>
+
     <button id="change-button">Change title</button>
     <script src="currying.js"></script>
+    <script src="debounce-throttle.js"></script>
   </body>
 </html>
