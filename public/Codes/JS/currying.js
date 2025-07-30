@@ -46,3 +46,17 @@ function infiniteAdd(num1) {
 const resSum = infiniteAdd(1)(2)(3)(10)(4)();
 
 console.log("Infinite currying sum: ", resSum);
+
+function updateElementText(id) {
+  return function (content) {
+    document.querySelector(`#${id}`).textContent = content;
+  };
+}
+
+const updateHeading = updateElementText("heading");
+
+const button = document.getElementById("change-button");
+
+button.addEventListener("click", () => {
+  updateHeading("updated text");
+});
