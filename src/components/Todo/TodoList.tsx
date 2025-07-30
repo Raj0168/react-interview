@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const items = ["walk the dog", "water the plants", "wash the dishes"];
 const completed = ["pack stuff", "book tickets"];
@@ -7,6 +7,11 @@ export default function TodoList() {
   const [listItems, setListItems] = useState<string[]>(items);
   const [newItem, setNewItem] = useState<string>("");
   const [completedItems, setCompletedItems] = useState<string[]>(completed);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,6 +75,7 @@ export default function TodoList() {
         <label>New task</label>
         <div style={{ display: "flex", gap: "0.5rem" }}>
           <input
+            ref={inputRef}
             style={{ width: "200px", borderRadius: "10px" }}
             type="text"
             value={newItem}
