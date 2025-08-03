@@ -1,35 +1,29 @@
-import React from "react";
-import useFetch from "./hooks/useFetch";
+import { useState } from "react";
+import { useDebounce } from "../hooks/useDebounce";
 
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+export default function Practice() {
+  const [value, setValue] = useState("");
 
-const PostList: React.FC = () => {
-  const { data, loading, error } = useFetch<Post[]>(
-    "https://jsonplaceholder.typicode.com/posts"
-  );
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!data || data.length === 0) return <p>No posts found.</p>;
+  const {
+    run: debouncedLog,
+    cancel,
+    flush,
+  } = useDebounce((text: string) => {
+    console.log("Debounced search for:", text);
+  }, 500);
 
   return (
     <div>
-      <h2>Post List</h2>
-      <ul>
-        {data.slice(0, 10).map((post) => (
-          <li key={post.id}>
-            <strong>{post.title}</strong>
-            <p>{post.body}</p>
-          </li>
-        ))}
-      </ul>
+      <input
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+          debouncedLog(e.target.value);
+        }}
+        placeholder="Type to search..."
+      />
+      <button onClick={flush}>Flush</button>
+      <button onClick={cancel}>Cancel</button>
     </div>
   );
-};
-
-export default PostList;
+}

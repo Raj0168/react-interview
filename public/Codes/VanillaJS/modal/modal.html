@@ -1,0 +1,36 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="../../../../public/Codes/VanillaJS/modal/style.css"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="../../../../public/Codes/VanillaJS/modal/style.css"
+    />
+  </noscript>
+</head>
+<body>
+  <div>
+    <button id="open-button" class="primary-button">Open Modal</button>
+
+    <div class="modal-overlay hidden">
+      <div class="modal">
+        <span class="modal-header">
+          <span>Modal Title</span>
+          <button style="font-size: 2rem" class="transparent-button">
+            &times;
+          </button>
+        </span>
+        <div class="modal-content">
+          <p>Hello there.</p>
+          <p>This is a simple modal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./modal.js"></script>
+</body>
