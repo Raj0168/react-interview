@@ -1,5 +1,6 @@
 const components = {
-  modal: "./modal/modal.html",
+  modal: "./components/modal/modal.html",
+  search: "./components/debounce-input/search.html",
 };
 
 const commons = {
@@ -14,17 +15,27 @@ async function renderDynamicComponents() {
       const componentPath = components[componentName];
       const response = await fetch(componentPath);
       const html = await response.text();
+
       const componentWrapper = document.createElement("div");
       componentWrapper.classList.add("component-container");
       componentWrapper.innerHTML =
         `<h3>${componentName.charAt(0).toUpperCase() + componentName.slice(1)} Component</h3>` +
         html;
+
       container.appendChild(componentWrapper);
+
+      if (componentName === "modal") {
+        injectModalAssets();
+      }
+      if (componentName === "search") {
+        injectSearchAssets();
+      }
     } catch (err) {
       console.error(`Error loading dynamic component "${componentName}":`, err);
     }
   }
 }
+
 async function renderCommonComponent(containerId, componentPath) {
   try {
     const container = document.getElementById(containerId);
@@ -46,3 +57,23 @@ async function init() {
 }
 
 window.onload = init;
+
+function injectModalAssets() {
+  // const modalCSS = document.createElement("link");
+  // modalCSS.rel = "stylesheet";
+  // modalCSS.href = "../../../../public/Codes/VanillaJS/modal/modal.css";
+  // modalCSS.media = "all";
+  // document.head.appendChild(modalCSS);
+
+  const modalScript = document.createElement("script");
+  modalScript.src =
+    "../../../../public/Codes/VanillaJS/components/modal/modal.js";
+  document.body.appendChild(modalScript);
+}
+
+function injectSearchAssets() {
+  const searchScript = document.createElement("script");
+  searchScript.src =
+    "../../../../public/Codes/VanillaJS/components/debounce-input/search.js";
+  document.body.appendChild(searchScript);
+}

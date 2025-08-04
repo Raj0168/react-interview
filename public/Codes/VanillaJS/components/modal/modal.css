@@ -4,15 +4,14 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #fff;
-
-  span {
-    padding-left: 1rem;
-    font-weight: 600;
-  }
-  button {
-    padding-right: 1rem;
-    color: #fff;
-  }
+}
+.modal-header span {
+  padding-left: 1rem;
+  font-weight: 600;
+}
+.modal-header button {
+  padding-right: 1rem;
+  color: #fff;
 }
 
 .modal {
@@ -26,6 +25,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: #333;
 }
 
 .modal-content {
@@ -33,15 +33,18 @@
 }
 
 .modal-overlay {
-  display: none;
   position: fixed;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.251);
+  background-color: rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
+}
+
+.hidden {
+  display: none;
 }

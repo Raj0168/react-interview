@@ -1,26 +1,29 @@
 <head>
   <link
     rel="stylesheet"
-    href="../../../../public/Codes/VanillaJS/modal/style.css"
+    href="../../../../public/Codes/VanillaJS/components/modal/modal.css"
     media="print"
     onload="this.media='all'"
   />
   <noscript>
     <link
       rel="stylesheet"
-      href="../../../../public/Codes/VanillaJS/modal/style.css"
+      href="../../../../public/Codes/VanillaJS/components/modal/modal.css"
     />
   </noscript>
 </head>
 <body>
-  <div>
+  <div class="container ">
     <button id="open-button" class="primary-button">Open Modal</button>
-
     <div class="modal-overlay hidden">
       <div class="modal">
         <span class="modal-header">
           <span>Modal Title</span>
-          <button style="font-size: 2rem" class="transparent-button">
+          <button
+            style="font-size: 2rem"
+            id="close-button"
+            class="transparent-button"
+          >
             &times;
           </button>
         </span>
@@ -32,5 +35,5 @@
     </div>
   </div>
 
-  <script src="./modal.js"></script>
+  <script src="../../../../public/Codes/VanillaJS/components/modal/modal.js"></script>
 </body>
