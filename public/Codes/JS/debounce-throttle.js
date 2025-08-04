@@ -1,15 +1,32 @@
-const myDebounce = (callbackFn, wait) => {
+const debounce = (callbackFn, delay, leading = false) => {
   let timer;
+  let called = false;
 
   return function (...args) {
     if (timer) {
       clearTimeout(timer);
     }
+
+    if (leading && !called) {
+      callbackFn(...args);
+      called = true;
+    }
+
     timer = setTimeout(() => {
       callbackFn(...args);
-    }, wait);
+    }, delay);
   };
 };
+
+const log = debounce(() => console.log("lala"), 500);
+
+log();
+log();
+log();
+
+setTimeout(() => {
+  log();
+}, 2000);
 
 const myThrottle = (callbackFn, wait) => {
   let last = 0;
