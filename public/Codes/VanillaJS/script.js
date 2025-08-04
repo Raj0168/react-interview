@@ -1,6 +1,7 @@
 const components = {
   modal: "./components/modal/modal.html",
   search: "./components/debounce-input/search.html",
+  tabs: "./components/tabs/tabs.html",
 };
 
 const commons = {
@@ -29,6 +30,9 @@ async function renderDynamicComponents() {
       }
       if (componentName === "search") {
         injectSearchAssets();
+      }
+      if (componentName === "tabs") {
+        injectTabsAssets();
       }
     } catch (err) {
       console.error(`Error loading dynamic component "${componentName}":`, err);
@@ -76,4 +80,10 @@ function injectSearchAssets() {
   searchScript.src =
     "../../../../public/Codes/VanillaJS/components/debounce-input/search.js";
   document.body.appendChild(searchScript);
+}
+
+function injectTabsAssets() {
+  const tabsScript = document.createElement("script");
+  tabsScript.src = "../../../../public/Codes/VanillaJS/components/tabs/tabs.js";
+  document.body.appendChild(tabsScript);
 }

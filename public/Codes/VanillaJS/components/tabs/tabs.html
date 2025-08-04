@@ -1,0 +1,38 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="../../../../../public/Codes/VanillaJS/components/tabs/tabs.css"
+  />
+</head>
+<body>
+  <div class="container">
+    <label class="toggle-switch">
+      <input type="checkbox" id="mode-toggle" />
+      <span class="slider"></span>
+      <span class="label-text">Accordion Mode</span>
+    </label>
+
+    <div id="tab-container" class="tabs">
+      <div class="tab-headers">
+        <button class="tab-button active" data-target="section1">
+          Section 1
+        </button>
+        <button class="tab-button" data-target="section2">Section 2</button>
+        <button class="tab-button" data-target="section3">Section 3</button>
+      </div>
+
+      <div class="tab-content">
+        <div class="tab-panel active" id="section1">
+          <p>This is the content of Section 1.</p>
+        </div>
+        <div class="tab-panel" id="section2">
+          <p>This is the content of Section 2.</p>
+        </div>
+        <div class="tab-panel" id="section3">
+          <p>This is the content of Section 3.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../../../../../public/Codes/VanillaJS/components/tabs/tabs.js"></script>
+</body>
