@@ -1,6 +1,6 @@
 const commons = {
-  header: "../../../../../public/Codes/VanillaJS/commons/header/index.html",
-  footer: "../../../../../public/Codes/VanillaJS/commons/footer/index.html",
+  header: "../../../../../public/Codes/VanillaJS/commons/header/header.html",
+  footer: "../../../../../public/Codes/VanillaJS/commons/footer/footer.html",
 };
 
 async function renderCommonComponent(containerId, componentPath) {
