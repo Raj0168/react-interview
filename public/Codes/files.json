@@ -1,10 +1,16 @@
 {
   "javascript": [
     "arrayMethods.js",
+    "async-await.js",
     "classes.js",
-    "closures.js",
     "currying.js",
-    "functions.js"
+    "functions.js",
+    "closures.js",
+    "debounce.js",
+    "objects.js",
+    "promises.js",
+    "this.js",
+    "timeout.js"
   ],
   "typescript": ["example1.ts"]
 }

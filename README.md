@@ -16,7 +16,7 @@ A curated collection of commonly asked **JavaScript**, **TypeScript**, and **Rea
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/react-interview-problems.git
+git clone https://github.com/Raj0168/react-interview.git
 cd react-interview-problems
 
 # Install dependencies
