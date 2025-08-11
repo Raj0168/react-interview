@@ -1,0 +1,25 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+.widget {
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.widget.large {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .widget.large {
+    grid-column: span 1;
+  }
+}
