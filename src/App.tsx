@@ -12,7 +12,7 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const ReactComponentsPage = lazy(() => import("./pages/ReactComponentsPage"));
 const SandboxPage = lazy(() => import("./pages/SandboxPage"));
 const PracticePage = lazy(() => import("./pages/PracticePage"));
-const DashboardPage = lazy(() => import("./Dashboard/dashboard"));
+const DashboardPage = lazy(() => import("./components/PracticeMain/PracticeMain"));
 
 function App() {
   return (
