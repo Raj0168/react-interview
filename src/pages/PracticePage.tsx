@@ -1,9 +1,9 @@
-import Pratice from "../components/Practice";
+import SearchDebounce from "../components/PracticeMain/components/SearchDebounce";
 
 export default function PracticePage() {
   return (
     <>
-      <Pratice />
+      <SearchDebounce />
     </>
   );
 }
