@@ -20,7 +20,7 @@ const items: ItemInterface[] = [
 ];
 
 export default function PracticeMain() {
-  const [activeTab, setActiveTab] = useState<number | null>(items[0].id);
+  const [activeTab, setActiveTab] = useState<number | null>(items[1].id);
 
   const handleActiveTab = (tabId: number) => {
     setActiveTab((prev) => (prev === tabId ? null : tabId));

@@ -1,6 +1,7 @@
 import { Loader } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useDebounce from "../../hooks/useDebounce";
+import useFetch from "../../hooks/useFetch";
 
 type Reaction = {
   likes: number;
@@ -20,58 +21,46 @@ type SearchResponse = {
 const SEARCH_API = "https://dummyjson.com/posts/search?";
 export default function SearchDebounce() {
   const [searchInput, setSearchInput] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
-  const [searchResults, setSearchResults] = useState<SearchResponse[]>([]);
-
   const debouncedSearch = useDebounce(searchInput, 500);
 
-  useEffect(() => {
-    setLoading(true);
-    fetch(`${SEARCH_API}q=${debouncedSearch}`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setSearchResults(json.posts);
-      })
-      .catch((err) => console.error(err))
-      .finally(() => setLoading(false));
-  }, [debouncedSearch]);
+  const {
+    data: searchResults,
+    loading,
+    error,
+  } = useFetch(`${SEARCH_API}q=${debouncedSearch}`);
 
   const handleSearchInput = (e: any) => {
-    const input: string = e.target.value.trim();
+    const input: string = e.target.value;
     setSearchInput(input);
   };
 
   return (
     <div>
-      <form>
-        <input
-          type="text"
-          placeholder="enter input here"
-          className="search-input"
-          onChange={(e) => handleSearchInput(e)}
-          value={searchInput}
-          style={{
-            width: "auto",
-            height: "1rem",
-            padding: "0.5rem 1rem",
-            fontSize: "1rem",
-            borderRadius: "1rem",
-          }}
-        />
-      </form>
+      <input
+        type="text"
+        placeholder="enter input here"
+        className="search-input"
+        onChange={(e) => handleSearchInput(e)}
+        value={searchInput}
+        style={{
+          width: "auto",
+          height: "1rem",
+          padding: "0.5rem 1rem",
+          fontSize: "1rem",
+          borderRadius: "1rem",
+        }}
+      />
       {loading ? (
         <Loader />
       ) : searchResults ? (
-        searchResults.map((result: SearchResponse) => (
+        searchResults.posts.map((result: any) => (
           <div key={result.id}>
             <p>{result.title}</p>
             <p>{result.body}</p>
           </div>
         ))
       ) : (
-        <p>No results</p>
+        <p>error ? {error} : "No results"</p>
       )}
     </div>
   );
