@@ -1,10 +1,6 @@
 import { ChevronsDown, ChevronsUp, CircleStar } from "lucide-react";
 import { useEffect, useState } from "react";
-
-type SortOptions = {
-  label: string;
-  ascending: boolean | null;
-};
+import type { SortOptions } from "../../../types/types";
 
 type Order = "title" | "price" | "rating" | null;
 
